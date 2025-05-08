@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Food Estimator</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h2>AI Food Estimator 🍲</h2>
+    <form method="post" action="/estimate" enctype="multipart/form-data">
+        <label><strong>Select Container Size:</strong></label><br>
+        <select name="container">
+            <option value="small">Small (2L)</option>
+            <option value="medium">Medium (5L)</option>
+            <option value="large">Large (10L)</option>
+        </select><br>
+
+        <label><strong>Select Food Type:</strong></label><br>
+        <select name="food">
+            <option value="dry">Dry (e.g., sabzi, poori)</option>
+            <option value="semi-solid">Semi-solid (e.g., khichdi, biryani)</option>
+            <option value="liquid">Liquid (e.g., daal, sambhar)</option>
+        </select><br>
+
+        <label><strong>Upload Image of Food:</strong></label><br>
+        <input type="file" name="image" required><br>
+
+        <button type="submit">Estimate</button>
+    </form>
+
+    {% if people %}
+        <h3>Estimated: <span style="color:#2e7d32">{{ people }}</span> people can eat this food.</h3>
+        <img src="/{{ image_url }}">
+    {% endif %}
+</body>
+</html>
